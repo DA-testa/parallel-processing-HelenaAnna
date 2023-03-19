@@ -4,9 +4,13 @@ def parallel_processing(n, m, data):
     output = []
     # TODO: write the function for simulating parallel tasks, 
     # create the output pairs
-    skirosana=sorted(data)
-    for i in range(m):
-        output.append((i,skirosana[i]))
+    threds = list(range(n))
+    laiks = [0] * n
+
+    for i, darits in enumerate(data):
+        nakamisThread = min(threds, key = lambda x: laiks[x])
+        output.append((nakamisThread, laiks[nakamisThread]))
+        laiks[nakamisThread] += darits
 
     return output
 
@@ -25,11 +29,11 @@ def main():
     data = list(map(int, input().split()))
 
     # TODO: create the function
-    result = parallel_processing(n,m,data)
+    result = parallel_processing(n, m, data)
     
     # TODO: print out the results, each pair in it's own line
-    for paris in result:
-        print(paris[0],paris[1])
+    for p, time in result:
+        print(p, time)
 
 
 if __name__ == "__main__":
