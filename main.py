@@ -17,7 +17,7 @@ def parallel_processing(n, m, data):
 
     output.append((a[min_t][1], min_laiks))
     a[min_t] = (min_laiks + t, a[min_t][1])
-    
+
     return output
 
 def main():
@@ -38,8 +38,8 @@ def main():
     result = parallel_processing(n, m, data)
     
     # TODO: print out the results, each pair in it's own line
-    for p, time in result:
-        print(p, time)
+    for a, time in result:
+        print(a, time)
 
 
 if __name__ == "__main__":
