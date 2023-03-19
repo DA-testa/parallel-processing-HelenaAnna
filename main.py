@@ -4,13 +4,25 @@ def parallel_processing(n, m, data):
     output = []
     # TODO: write the function for simulating parallel tasks, 
     # create the output pairs
-    threds = list(range(n))
+    Nakamaisthread = 0
     laiks = [0] * n
 
-    for i, darits in enumerate(data):
-        nakamisThread = min(threds, key = lambda x: laiks[x])
-        output.append((nakamisThread, laiks[nakamisThread]))
-        laiks[nakamisThread] += darits
+    def atrast_mazako():
+        min_Nakamaisthread = 0
+        min_laiks = laiks[0]
+
+        for i in range(1, n):
+            if laiks[i] < min_laiks:
+                min_Nakamaisthread = 1
+                min_laiks = laiks[i]
+        return min_Nakamaisthread
+
+    for i in range(m):
+        darits = data[i]
+        #thread = Nakamaisthread
+        output.append((Nakamaisthread, laiks[Nakamaisthread]))
+        laiks[Nakamaisthread] += darits
+        Nakamaisthread = atrast_mazako()
 
     return output
 
