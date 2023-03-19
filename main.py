@@ -32,8 +32,8 @@ def main():
     result = parallel_processing(n, m, data)
     
     # TODO: print out the results, each pair in it's own line
-    for a, time in result:
-        print(a, time)
+    for p, time in result:
+        print(p, time)
 
 
 if __name__ == "__main__":
