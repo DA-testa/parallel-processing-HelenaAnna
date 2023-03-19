@@ -6,23 +6,18 @@ def parallel_processing(n, m, data):
     # create the output pairs
     Nakamaisthread = 0
     laiks = [0] * n
+    row = [(0, i) for i in range (n)]
 
-    def atrast_mazako():
-        min_Nakamaisthread = 0
-        min_laiks = laiks[0]
-
-        for i in range(1, n):
-            if laiks[i] < min_laiks:
-                min_Nakamaisthread = 1
-                min_laiks = laiks[i]
-        return min_Nakamaisthread
 
     for i in range(m):
         darits = data[i]
         #thread = Nakamaisthread
-        output.append((Nakamaisthread, laiks[Nakamaisthread]))
-        laiks[Nakamaisthread] += darits
-        Nakamaisthread = atrast_mazako()
+        s, a = row[Nakamaisthread]
+        output.append((s, a))
+        s = max(s, laiks[a]) + darits
+        laiks[a] = s
+        row[Nakamaisthread] = (s, a)
+        Nakamaisthread = (Nakamaisthread + 1) % n
 
     return output
 
