@@ -8,7 +8,7 @@ def parallel_processing(n, m, data):
     th = list(range(n))
 
     for i, darbs in enumerate(data):
-        nakamais_th = min(th, a = lambda x: laiks[x])
+        nakamais_th = min(th, key = lambda x: laiks[x])
         output.append((nakamais_th, laiks[nakamais_th]))
         laiks[nakamais_th] += darbs
 
