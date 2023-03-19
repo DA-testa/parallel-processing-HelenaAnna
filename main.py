@@ -4,19 +4,13 @@ def parallel_processing(n, m, data):
     output = []
     # TODO: write the function for simulating parallel tasks, 
     # create the output pairs
-   a =[(0, j) for i in range(n)]
+   laiks = [0] * n 
+   th = list(range(n))
 
-   for i, t in enumerate(data):
-    min_laiks = float("inf")
-    min_a = -1
-
-    for s, (laiks, _) in enumerate (a):
-        if laiks < min_laiks:
-            min_laiks = laiks
-            min_t = t
-
-    output.append((a[min_t][1], min_laiks))
-    a[min_t] = (min_laiks + t, a[min_t][1])
+   for i, darbs in enumerate(data):
+    nakamais_th = min(th, a = lambda x: laiks[x])
+    output.append((nakamais_th, laiks[nakamais_th]))
+    laiks[nakamais_th] += darbs
 
     return output
 
